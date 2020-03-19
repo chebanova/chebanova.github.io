@@ -17,6 +17,16 @@ header p {
     margin-top: -2em;
 }
 
-.white, .white a:link, .white a:visited {
+.white,
+.white a:link,
+.white a:visited {
     color: white;
+}
+
+header nav img {
+    border-radius: 50%;
+}
+
+a:link, a:visited {
+    color: black;
 }
