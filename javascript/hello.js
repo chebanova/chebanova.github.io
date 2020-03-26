@@ -71,3 +71,8 @@ console.log(a);
 for (let i=0; i<10; i++) {
     console.log('Schleife ${i}');
 }
+
+for (let j = 0; j < partipants.length; j++) {
+    const partipant = partipants [j];
+    console.log('Teilnehmer*in ${j} ${participant}');
+}
