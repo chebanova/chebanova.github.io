@@ -18,7 +18,7 @@ console.log("Name: ", firstname, lastname);
 let fullname = 'Jeffrey "The Dude" Lebowski';
 console.log(fullname);
 
-let template = 'Dein Highscore sind ${highscore} Punkte';
+let template = `Dein Highscore sind ${highscore} Punkte`;
 console.log(template);
 
 let isOver18 = true;
@@ -27,10 +27,10 @@ console.log(isOver18);
 let age = 19;
 console.log("ueber 18?", age > 18);
 
-let partipants = ["John", "Jane", "Max"];
-console.log(partipants);
-console.log("Eintraege im Array: ", partipants.length);
-console.log(partipants[2]);
+let participants = ["John", "Jane", "Max"];
+console.log(participants);
+console.log("Eintraege im Array: ", participants.length);
+console.log(participants[2]);
 
 let gameHighscores = [2099, 3010, 3333, 5000];
 console.log(gameHighscores);
@@ -57,8 +57,8 @@ console.log(a);
 // if-Abfrage
 
 // let myAge = prompt("Wie alt bist du?");
-// console.log('Du bist ${myAge} Jahre alt.');
-// console.log('ueber 18? ${myAge > 18}');
+// console.log(`Du bist ${myAge} Jahre alt.`);
+// console.log(`ueber 18? ${myAge > 18}`);
 
 // if  (myAge > 18) {
 //     console.log("Glueckwunsch ueber 18");
@@ -69,10 +69,37 @@ console.log(a);
 // Schleifen: or Schleife
 
 for (let i=0; i<10; i++) {
-    console.log('Schleife ${i}');
+    console.log(`Schleife ${i}`);
 }
 
-for (let j = 0; j < partipants.length; j++) {
-    const partipant = partipants [j];
-    console.log('Teilnehmer*in ${j} ${participant}');
+for (let j = 0; j < participants.length; j++) {
+    const participant = participants [j];
+    console.log(`Teilnehmer*in ${j} ${participant}`);
 }
+
+participants.forEach(participant => {
+    console.log(`Teilnehmer*in ${participant}`);
+});
+
+//Funktionen
+
+function showAge(birthYear) {
+    console.log(`Du bist ca. ${2020 - birthYear} Jahre alt.`);
+}
+
+showAge(1964);
+showAge(1977);
+
+function calcAge(birthYear) {
+    return 2020 - birthYear;
+}
+
+console.log(`Max ist ${calcAge(1977)} Jahre alt.`);
+console.log(`John ist ${calcAge(1988)} Jahre alt.`);
+
+let birthYears = [ 1964, 1977, 1980, 2001, 2004];
+console.log(birthYears);
+
+birthYears.forEach(year => {
+    console.log(`Geboren ${year}, heute  ca. ${calcAge(year)} Jahre alt.`)
+})
