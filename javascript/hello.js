@@ -54,6 +54,8 @@ console.log(b/(a-1));
 a++;
 console.log(a);
 
+// if-Abfrage
+
 // let myAge = prompt("Wie alt bist du?");
 // console.log('Du bist ${myAge} Jahre alt.');
 // console.log('ueber 18? ${myAge > 18}');
@@ -63,3 +65,9 @@ console.log(a);
 // } else {
 //     console.log("Leider unter 18");
 // }
+
+// Schleifen: or Schleife
+
+for (let i=0; i<10; i++) {
+    console.log('Schleife ${i}');
+}
