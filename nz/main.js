@@ -1,5 +1,5 @@
 //alert("Hallo Welt!")
-var mymap = L.map('mapid').setView([-44.5, 169.133333], 13);
+var mymap = L.map('map').setView([-44.5, 169.133333], 13);
 
 L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
