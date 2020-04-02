@@ -1,6 +1,6 @@
 //alert("Hallo Welt!")
 
-var map = document.getElementById('map');
+let map = document.getElementById('map');
 
 let latitude = map.dataset.lat;
 let longitude = map.dataset.lng;
