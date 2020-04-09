@@ -29,6 +29,24 @@ L.control.layers({
 
 let drawCircles = function () {
     let data = CONFIRMED;
+    let header = CONFIRMED[0];
+    let index = header.length - 1;
+    let options = document.querySelector("#pulldown").options;
+    let value = options[options.selectedIndex].value;
+    let label = options[options.selectedIndex].text;
+    // console.log(value,label,options);
+
+    if (value === "confirmed"){
+        data = CONFIRMED; {
+    } else if (value === "deaths") {
+        data = DEATHS;
+    } else {
+        data = RECOVERED;
+    }
+    // Datum & Thema anzeigen 
+    document.querySelector("#datum").innerHTML = `am ${header[index]} - ${label}`;
+
+    circleGroup.clearLayers();
     //console.log(data);
     for (let i = 1; i < data.length; i++) {
         let row = data[i];
@@ -36,7 +54,7 @@ let drawCircles = function () {
         let reg = `${row[0]} ${row[1]}`;
         let lat = row[2];
         let lng = row[3];
-        let val = row[row.length - 1];
+        let val = row[index];
         //let mrk = L.marker([lat,lng]).addTo(map);
         //mrk.bindPopup(`${reg}: ${val}`);
 
@@ -50,6 +68,10 @@ let drawCircles = function () {
         }).addTo(circleGroup);
         circle.bindPopup(`${reg}: ${val}`);
     }
+};
+
+document.querySelector("#pulldown").onchange = function() {
+    drawCircles();
 };
 
 drawCircles();
