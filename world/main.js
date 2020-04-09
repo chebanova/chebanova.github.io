@@ -1,7 +1,7 @@
 let startLayer = L.tileLayer.provider("Esri.WorldTopoMap");
 
 let map = L.map("map", {
-    center: [0, 0],
+    center: [30, 0],
     zoom: 2,
     layers: [
         startLayer
@@ -34,19 +34,27 @@ let drawCircles = function () {
     let options = document.querySelector("#pulldown").options;
     let value = options[options.selectedIndex].value;
     let label = options[options.selectedIndex].text;
-    // console.log(value,label,options);
+    let color
+    //console.log(value,label,options);
 
-    if (value === "confirmed"){
-        data = CONFIRMED; {
+    if (value === "confirmed") {
+        data = CONFIRMED;
+        color = "#345685"
     } else if (value === "deaths") {
         data = DEATHS;
+        color = "#045685"
     } else {
         data = RECOVERED;
+        color = "#145685"
     }
+
+    console.log(CONFIRMED == RECOVERED);
+
     // Datum & Thema anzeigen 
     document.querySelector("#datum").innerHTML = `am ${header[index]} - ${label}`;
 
     circleGroup.clearLayers();
+
     //console.log(data);
     for (let i = 1; i < data.length; i++) {
         let row = data[i];
@@ -64,7 +72,8 @@ let drawCircles = function () {
         let s = 0.5;
         let r = Math.sqrt(val * s / Math.PI);
         let circle = L.circleMarker([lat, lng], {
-            radius: r
+            radius: r,
+            color: color
         }).addTo(circleGroup);
         circle.bindPopup(`${reg}: ${val}`);
     }
