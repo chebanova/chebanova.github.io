@@ -48,14 +48,13 @@ let drawCircles = function () {
         color = "#3CB371";
     };
 
-    console.log(CONFIRMED == RECOVERED);
 
     // Datum & Thema anzeigen 
     document.querySelector("#datum").innerHTML = `am ${header[index]} - ${label}`;
 
     circleGroup.clearLayers();
 
-    data.sort(function compareNumbers(row1,row2) {
+    data.sort(function compareNumbers(row1, row2) {
         return row2[index] - row1[index];
     });
 
@@ -89,7 +88,7 @@ let drawCircles = function () {
     }
 };
 
-document.querySelector("#pulldown").onchange = function() {
+document.querySelector("#pulldown").onchange = function () {
     drawCircles();
 };
 
@@ -104,3 +103,39 @@ slider.onchange = function () {
 };
 
 drawCircles();
+
+let playButton = document.querySelector("#play");
+let runningAnimation = null;
+
+playButton.onclick = function () {
+    let value = slider.min;
+    if (slider.value == slider.max) {
+        value = slider.min;
+    } else {
+        value = slider.value;
+    }
+    
+
+    playButton.value = "⏸";
+
+    if (runningAnimation) {
+        window.clearInterval(runningAnimation);
+        playButton.value = "▶️";
+        runningAnimation = null;
+    } else {
+
+
+        runningAnimation = window.setInterval(function () {
+            // console.log(value,"nach 250 ms");
+            slider.value = value;
+            drawCircles();
+            value++;
+
+            if (value > slider.max) {
+                window.clearInterval(runningAnimation);
+                playButton.value = "▶️";
+                runningAnimation = null;
+            }
+        }, 250)
+    }
+};
