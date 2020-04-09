@@ -114,7 +114,7 @@ playButton.onclick = function () {
     } else {
         value = slider.value;
     }
-    
+
 
     playButton.value = "⏸";
 
