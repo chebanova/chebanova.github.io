@@ -30,23 +30,23 @@ L.control.layers({
 let drawCircles = function () {
     let data = CONFIRMED;
     let header = CONFIRMED[0];
-    let index = header.length - 1;
+    let index = document.querySelector("#slider").value;
     let options = document.querySelector("#pulldown").options;
     let value = options[options.selectedIndex].value;
     let label = options[options.selectedIndex].text;
-    let color
+    let color;
     //console.log(value,label,options);
 
     if (value === "confirmed") {
         data = CONFIRMED;
-        color = "#345685"
+        color = "#FF6347";
     } else if (value === "deaths") {
         data = DEATHS;
-        color = "#045685"
+        color = "#483D88";
     } else {
         data = RECOVERED;
-        color = "#145685"
-    }
+        color = "#3CB371";
+    };
 
     console.log(CONFIRMED == RECOVERED);
 
@@ -80,6 +80,16 @@ let drawCircles = function () {
 };
 
 document.querySelector("#pulldown").onchange = function() {
+    drawCircles();
+};
+
+let slider = document.querySelector("#slider");
+slider.min = 4;
+slider.max = CONFIRMED[0].length - 1;
+slider.step = 1;
+slider.value = slider.max;
+
+slider.onchange = function () {
     drawCircles();
 };
 
