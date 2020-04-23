@@ -27,7 +27,7 @@ L.control.layers({
 }, {
     "Wetterstationen Tirol": overlay.stations,
     "Temperatur (°C)": overlay.temperature,
-    "Windgeschwindigkeit (m/s)": overlay.wind
+    "Windgeschwindigkeit (km/h)": overlay.wind
 }).addTo(map);
 
 let awsUrl = "https://aws.openweb.cc/stations";
@@ -81,10 +81,11 @@ let drawWind = function (jsonData) {
             return feature.properties.WG;
         },
         pointToLayer: function (feature, latlng) {
+            let kmh = Math.round(feature.properties.WG / 1000 * 3600);
             return L.marker(latlng, {
                 title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`,
                 icon: L.divIcon({
-                    html: `<div class="label-wind">${feature.properties.WG.toFixed(1)}</div>`,
+                    html: `<div class="label-wind">${kmh}</div>`,
                     className: "ignore-me" // dirty hack
                 })
             })
