@@ -78,13 +78,13 @@ let drawWind = function (jsonData) {
     console.log("aus der Funktion", jsonData);
     L.geoJson(jsonData, {
         filter: function (feature) {
-            return feature.properties.LT;
+            return feature.properties.WG;
         },
         pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`,
                 icon: L.divIcon({
-                    html: `<div class="label-wind">${feature.properties.LT.toFixed(1)}</div>`,
+                    html: `<div class="label-wind">${feature.properties.WG.toFixed(1)}</div>`,
                     className: "ignore-me" // dirty hack
                 })
             })
@@ -103,5 +103,9 @@ aws.on("data:loaded", function () {
     drawTemperature(aws.toGeoJSON());
     map.fitBounds(overlay.stations.getBounds());
 
+    drawWind(aws.toGeoJSON());
+    map.fitBounds(overlay.stations.getBounds());
+
     overlay.temperature.addTo(map);
+    overlay.wind.addTo(map);
 });
