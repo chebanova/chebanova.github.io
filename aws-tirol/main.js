@@ -74,14 +74,29 @@ let drawTemperature = function (jsonData) {
     }).addTo(overlay.temperature);
 };
 
+let drawWind = function (jsonData) {
+    console.log("aus der Funktion", jsonData);
+    L.geoJson(jsonData, {
+        filter: function (feature) {
+            return feature.properties.LT;
+        },
+        pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {
+                title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`,
+                icon: L.divIcon({
+                    html: `<div class="label-wind">${feature.properties.LT.toFixed(1)}</div>`,
+                    className: "ignore-me" // dirty hack
+                })
+            })
+        }
+    }).addTo(overlay.wind);
+};
+
 // 1. neues overlay definieren, zu L.control.layers hinzufügen und default anzeigen
 // 2. die Funktion drawWind als 1:1 Kopie von drawTemperature mit Anpassungen (in km/h)
 // 3. einen neuen Stil .label-wind im CSS von main.css
 // 4. die Funktion drawWind in data:loaded aufrufen
 
-let drawWind = function (jsonData) {
-
-};
 
 aws.on("data:loaded", function () {
     //console.log(aws.toGeoJSON());
