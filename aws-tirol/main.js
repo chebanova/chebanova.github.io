@@ -8,7 +8,8 @@ let map = L.map("map", {
 
 let overlay = {
     stations: L.featureGroup(),
-    temperature: L.featureGroup()
+    temperature: L.featureGroup(),
+    wind: L.featureGroup()
 }
 
 L.control.layers({
@@ -25,7 +26,8 @@ L.control.layers({
     ])
 }, {
     "Wetterstationen Tirol": overlay.stations,
-    "Temperatur (°C)": overlay.temperature
+    "Temperatur (°C)": overlay.temperature,
+    "Windgeschwindigkeit (m/s)": overlay.wind
 }).addTo(map);
 
 let awsUrl = "https://aws.openweb.cc/stations";
