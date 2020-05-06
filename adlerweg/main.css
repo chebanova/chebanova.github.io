@@ -42,8 +42,14 @@ main h2 {
     border: 1px solid gray;
 }
 
-#et-grad {
-    color: var(--leicht, #006400);
-    color: var(--mittelschwierig, #FF8C00);
-    color: var(--schwierig, #8B0000);
+/* #et-grad.leicht {
+    color: #006400;
 }
+
+#et-grad.mittelschwierig {
+    color: #FF8C00;
+}
+
+#et-grad.schwierig {
+    color: #8B0000;
+} */
