@@ -41,3 +41,9 @@ main h2 {
     height: 70vh;
     border: 1px solid gray;
 }
+
+#et-grad {
+    color: var(--leicht, #006400);
+    color: var(--mittelschwierig, #FF8C00);
+    color: var(--schwierig, #8B0000);
+}
